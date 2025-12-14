@@ -35,8 +35,14 @@ void main(void) {
   // config_adc10();
   // config_timer();
 
-  // max7219_send(DIGIT0, 7);
-  max7219_send(DIGIT0, 0b01110111); // A
+  // max7219_send(DIGIT0, 0b01001110); // C
+  max7219_send(DIGIT0, 0b01000111); // F
+  // max7219_send(DIGIT1, 0x0f);
+  max7219_send(DIGIT2, 7);
+  max7219_send(DIGIT3, 7);
+  max7219_send(DIGIT4, 0b10000111);
+  max7219_send(DIGIT5, 7);
+  // max7219_send(DIGIT0, 0b01110111); // A
 
   while(1);
 }
@@ -87,8 +93,10 @@ void config_spi(void) {
 void init_max7219(void) {
   max7219_send(DISPLAY_TEST, 0x00);
   max7219_send(SHUTDOWN, 0x01);
-  max7219_send(SCAN_LIMIT, 0x00);
-  max7219_send(DECODE_MODE, 0x00);
+  // max7219_send(SCAN_LIMIT, 0x00);
+  max7219_send(SCAN_LIMIT, 0x05);
+  max7219_send(DECODE_MODE, 0b00111110);
+  // max7219_send(DECODE_MODE, 0x01);
   max7219_send(INTENSITY, 0x03);
 
   for (int i = 1; i <= 8; i++)
