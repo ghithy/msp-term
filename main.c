@@ -286,7 +286,7 @@ void ADC10_ISR(void) {
 
   tx_index = 0;
   IE2 |= UCA0TXIE;
-	IFG2 |= UCA0TXIFG;
+  IFG2 |= UCA0TXIFG;
   // ----------------------------------
 
   ADC10SA = (unsigned int)&adc_buffer[0];
